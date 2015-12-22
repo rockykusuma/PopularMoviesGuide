@@ -12,6 +12,9 @@
 		96E399401C29401A00FF642B /* PopularMoviesGuide.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96E3993E1C29401A00FF642B /* PopularMoviesGuide.xcdatamodeld */; };
 		96E399431C29401A00FF642B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E399411C29401A00FF642B /* Main.storyboard */; };
 		96E399451C29401A00FF642B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E399441C29401A00FF642B /* Assets.xcassets */; };
+		96E3994D1C2947BA00FF642B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E3994C1C2947BA00FF642B /* MovieCell.swift */; };
+		96E399521C294C1600FF642B /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E399511C294C1600FF642B /* MovieData.swift */; };
+		96E399551C294F1D00FF642B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E399541C294F1D00FF642B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		96E399421C29401A00FF642B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96E399441C29401A00FF642B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96E399461C29401A00FF642B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E3994C1C2947BA00FF642B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		96E399511C294C1600FF642B /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		96E399541C294F1D00FF642B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,49 @@
 		96E399391C29401900FF642B /* PopularMoviesGuide */ = {
 			isa = PBXGroup;
 			children = (
+				96E399531C294F0600FF642B /* Util */,
+				96E399501C2947E400FF642B /* View */,
+				96E3994F1C2947DF00FF642B /* Model */,
+				96E3994E1C2947D900FF642B /* Controller */,
 				96E3993A1C29401900FF642B /* AppDelegate.swift */,
-				96E3993C1C29401900FF642B /* ViewController.swift */,
-				96E399411C29401A00FF642B /* Main.storyboard */,
 				96E399441C29401A00FF642B /* Assets.xcassets */,
 				96E399461C29401A00FF642B /* Info.plist */,
 				96E3993E1C29401A00FF642B /* PopularMoviesGuide.xcdatamodeld */,
 			);
 			path = PopularMoviesGuide;
+			sourceTree = "<group>";
+		};
+		96E3994E1C2947D900FF642B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				96E3993C1C29401900FF642B /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		96E3994F1C2947DF00FF642B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96E399511C294C1600FF642B /* MovieData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		96E399501C2947E400FF642B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96E399411C29401A00FF642B /* Main.storyboard */,
+				96E3994C1C2947BA00FF642B /* MovieCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		96E399531C294F0600FF642B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				96E399541C294F1D00FF642B /* Constants.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +177,10 @@
 			files = (
 				96E3993D1C29401900FF642B /* ViewController.swift in Sources */,
 				96E399401C29401A00FF642B /* PopularMoviesGuide.xcdatamodeld in Sources */,
+				96E3994D1C2947BA00FF642B /* MovieCell.swift in Sources */,
+				96E399521C294C1600FF642B /* MovieData.swift in Sources */,
 				96E3993B1C29401900FF642B /* AppDelegate.swift in Sources */,
+				96E399551C294F1D00FF642B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
