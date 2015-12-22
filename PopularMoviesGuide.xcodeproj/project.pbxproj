@@ -15,6 +15,7 @@
 		96E3994D1C2947BA00FF642B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E3994C1C2947BA00FF642B /* MovieCell.swift */; };
 		96E399521C294C1600FF642B /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E399511C294C1600FF642B /* MovieData.swift */; };
 		96E399551C294F1D00FF642B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E399541C294F1D00FF642B /* Constants.swift */; };
+		96E399571C295F5F00FF642B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E399561C295F5F00FF642B /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		96E3994C1C2947BA00FF642B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		96E399511C294C1600FF642B /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		96E399541C294F1D00FF642B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		96E399561C295F5F00FF642B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				96E399511C294C1600FF642B /* MovieData.swift */,
+				96E399561C295F5F00FF642B /* Movie.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E399571C295F5F00FF642B /* Movie.swift in Sources */,
 				96E3993D1C29401900FF642B /* ViewController.swift in Sources */,
 				96E399401C29401A00FF642B /* PopularMoviesGuide.xcdatamodeld in Sources */,
 				96E3994D1C2947BA00FF642B /* MovieCell.swift in Sources */,
@@ -322,6 +326,7 @@
 				96E3994B1C29401A00FF642B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

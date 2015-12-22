@@ -8,7 +8,23 @@
 
 import Foundation
 
+protocol MovieDataProtocol {
+    func receivedResponseFromServer(response: AnyObject)
+}
+
 class MovieData {
+    
+//    class var sharedInstance: MovieData {
+//        struct Static {
+//            static let instance: MovieData = MovieData()
+//        }
+//        return Static.instance
+//    }
+//    
+    static let sharedInstance = MovieData()
+    var movieDelegate: MovieDataProtocol!
+    
+    var movies = [Movie]()
     
     func downloadData(){
         
@@ -23,9 +39,15 @@ class MovieData {
                         
                         let dict = try NSJSONSerialization.JSONObjectWithData(NSData!, options: .AllowFragments) as? Dictionary <String , AnyObject>
                         
-                        
                         if let results = dict!["results"] as? [Dictionary<String , AnyObject>] {
-                            print(results)
+                            
+                            
+                            for obj in results {
+                                let movie = Movie(movieDict:obj)
+                                self.movies.append(movie)
+                            }
+                            self.movieDelegate.receivedResponseFromServer(self.movies)
+                           
                             
                         }
                     } catch {
@@ -36,6 +58,5 @@ class MovieData {
         task.resume()
     }
     
-    
-    
+
 }

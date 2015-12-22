@@ -8,56 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, MovieDataProtocol {
     
     @IBOutlet weak var collectionView : UICollectionView!
-    var movieData : MovieData!
     
+    let defaultsize = CGSizeMake(243,360)
+    let focusSize = CGSizeMake(267.3,396)
+    var moviesArray = [Movie]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        movieData.downloadData()
-        //downloadData()
-        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+        MovieData.sharedInstance.movieDelegate = self
+        MovieData.sharedInstance.downloadData()
         
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func downloadData(){
-        
-        let POPULARMOVIES_URL = "\(URL_POPULAR)\(API_KEY)"
-        
-        let url = NSURL(string: POPULARMOVIES_URL)!
-        let request = NSURLRequest(URL: url)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { (NSData, NSURLResponse, NSError) -> Void in
-            if NSError != nil {
-                print(NSError.debugDescription)
-            } else {
-                do {
-                    
-                    let dict = try NSJSONSerialization.JSONObjectWithData(NSData!, options: .AllowFragments) as? Dictionary <String , AnyObject>
-                    
-                    
-                    if let results = dict!["results"] as? [Dictionary<String , AnyObject>] {
-                        print(results)
-                        
-                    }
-                } catch {
-                    
-                }
-                
-            }
+    func receivedResponseFromServer(response: AnyObject) {
+        if let movArray = response as? [Movie] {
+            moviesArray = movArray
         }
-        task.resume()
-        
-        
+        collectionView.reloadData()
     }
-
     
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -65,20 +45,56 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCell", forIndexPath: indexPath) as? MovieCell{
+            let movie = moviesArray[indexPath.row]
+            cell.configureCell(movie)
+            
+            if cell.gestureRecognizers?.count == nil {
+                let tap = UITapGestureRecognizer(target: self, action: "movieTapped:")
+                tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
+                cell.addGestureRecognizer(tap)
+            }
+            
+            
+            return cell
+        } else {
+            return MovieCell()
+        }
     
+    }
+    func movieTapped(gesture:UITapGestureRecognizer){
+        if let cell = gesture.view as? MovieCell {
+            // Load the Next View Controller and pass the Movie
+            print("Tap Detected")
+        }
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return moviesArray.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSizeMake(380, 601)
+        return CGSizeMake(289, 474)
     }
 
+    
+    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        
+        if let prev = context.previouslyFocusedView as? MovieCell {
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                prev.movieImg.frame.size = self.defaultsize
+            })
+        }
+        
+        if let next = context.nextFocusedView as? MovieCell {
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                next.movieImg.frame.size = self.focusSize
+            })
+        }
+        
+    }
     
 
 }
